@@ -1,0 +1,46 @@
+
+.addItem {
+  color: white;
+  background: #c33764; 
+  background: -webkit-linear-gradient(
+    to left,
+    #1d2671,
+    #c33764
+  );
+  background: linear-gradient(
+    to left,
+    #1d2671,
+    #c33764
+  );
+}
+.addItem:hover {
+  color: white;
+  box-shadow: #29323c;
+}
+.addItem:active {
+  transform: scale(0.98);
+}
+* {
+  box-sizing: border-box;
+}
+
+.header-color {
+  background: #141e30; 
+  background: -webkit-linear-gradient(
+    to bottom,
+    #243b55,
+    #141e30
+  );
+  background: linear-gradient(
+    to bottom,
+    #243b55,
+    #141e30
+  ); 
+}
+
+.todo-color {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+}
+.trigger:active {
+  transform: scale(0.98);
+}
