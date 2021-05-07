@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Button, Container, Row, Col, Alert } from "react-bootstrap";
+import { Dropdown, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import Alluser from "./components/Allusercomponent";
 import "./App.css";
 
 const LOCAL_STORAGE_KEY = "USERS_KEY";
 
 function App() {
-  const [admin, setAdmin] = useState("false");
+  const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState("");
   const [useremail, setUseremail] = useState("");
   const [userphone, setUserphone] = useState("");
@@ -75,12 +75,46 @@ function App() {
       handleButtonClick();
     }
   }
-
-  return (
-    <Fragment>
+  if(!isAdmin) {
+    return (
+      <Fragment>
+      <div className="drop">
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Dropdown Button
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+          <Dropdown.Item onClick={() => setIsAdmin(false)}>Normal</Dropdown.Item>
+          <Dropdown.Item onClick={() => setIsAdmin(true)}>Admin</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
       <Container className="mt-3 p-3 ">
         <h2 className=" p-3 text-center header-color text-white shadow-lg ">
-          User Management
+          User Management List
+        </h2>
+      </Container>
+       <Alluser usrm={usrm} />
+      </Fragment>
+      )
+  }
+  else {
+  return (
+    <Fragment>
+      <div className="drop">
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Dropdown Button
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+          <Dropdown.Item onClick={() => setIsAdmin(false)}>Normal</Dropdown.Item>
+          <Dropdown.Item onClick={() => setIsAdmin(true)}>Admin</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+      <Container className="mt-3 p-3 ">
+        <h2 className=" p-3 text-center header-color text-white shadow-lg ">
+         Add User Management
         </h2>
 
         <Row className="p-2 mt-3 mx-auto">
@@ -169,8 +203,8 @@ function App() {
           </Col>
         </Row>
       </Container>
-       <Alluser usrm={usrm} />
     </Fragment>
   );
+  }
 }
 export default App;
